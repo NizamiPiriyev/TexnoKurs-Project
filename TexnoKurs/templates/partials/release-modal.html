@@ -1,0 +1,45 @@
+{% load static %}
+{% block silmek %}
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/css?family=Roboto|Varela+Round' %} ">
+<link rel="stylesheet" href="{% static 'release-modal.css' %}">
+<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css' %} ">
+<link rel="stylesheet" href="{% static 'https://fonts.googleapis.com/icon?family=Material+Icons' %} ">
+<link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %} ">
+<script src="{% static 'https://code.jquery.com/jquery-3.5.1.min.js' %} "></script>
+<script src="{% static 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' %} "></script>
+<script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' %} "></script>
+</head>
+<body>
+<!-- Modal HTML -->
+<div id="releaseModal" class="modal fade" aria-labelledby="releaseModalLabel">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">
+				<div class="icon-box">
+					<i class="material-icons">&#10006;</i>
+				</div>						
+				<h4 class="modal-title w-100">Do you want to delete the following course?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<p>{{course.name}}</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+                <form action="{% url 'release_the_course' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{user.id}}" />
+                    <input type="hidden" name="course_id" value="{{course.id}}" />
+                    <input type="submit" value="Təsdiq et" class="btn btn-danger" />
+                </form>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+			</div>
+		</div>
+	</div>
+</div>     
+</body>
+{% endblock %}

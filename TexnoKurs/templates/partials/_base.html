@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>TexnoKurs</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'images/bookaes.png' %} " type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %} ">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %} ">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %} ">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="{% static 'css/versions.css' %} ">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %} ">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %} ">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="{% static 'js/modernizer.js' %} "></script>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="host_version"> 
+    <!-- LOADER -->
+	<div id="preloader">
+		<div class="loader-container">
+			<div class="progress-br float shadow">
+				<div class="progress__item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- END LOADER -->	
+	
+    <!--Navbar-->
+    {% include 'partials/_navbar.html' %}
+
+    {% block content %}
+    {% endblock  %}
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>About Us</h3>
+                        </div>
+                        <p>In addition to being able to connect with us more quickly through our social media accounts, you can also receive additional information about updates from daily shared posts.</p>   
+						<div class="footer-right">
+							<ul class="footer-links-soi">
+								<li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://www.github.com/"><i class="fa fa-github"></i></a></li>
+								<li><a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a></li>
+								<li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+							</ul><!-- end links -->
+						</div>						
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+				<div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Links</h3>
+                        </div>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="{% url 'courses' %}">Courses</a></li>
+							<li><a href="{% url 'about' %}">About</a></li>
+							<li><a href="{% url 'contact' %}">Contact</a></li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+				
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>Contact Info's</h3>
+                        </div>
+
+                        <ul class="footer-links">
+                            <li><a href="mailto:texnokurses@gmail.com">texnokurses@gmail.com</a></li>
+                            <li><a href="https://goo.gl/maps/ZQy7arFZMcf4id7e7">Poland, Warsaw</a> </li>
+                            <li>+48 00 123 45 67</li>
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+				
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </footer><!-- end footer -->
+
+    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/all.js' %} "></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/custom.js' %} "></script>
+	<script src="{% static 'js/timeline.min.js' %} "></script>
+	<script>
+		timeline(document.querySelectorAll('.timeline'), {
+			forceVerticalMode: 700,
+			mode: 'horizontal',
+			verticalStartPosition: 'left',
+			visibleItems: 4
+		});
+	</script>
+    <script>
+        $(window).on('load', function() {
+            $('#logreg').modal('show');
+        });
+    </script>
+</body>
+</html>
