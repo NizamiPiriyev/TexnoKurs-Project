@@ -1,93 +1,123 @@
-TexnoCourse Documentation
+# TexnoKurs Documentation
 
-Introduction
-TexnoCourse is a full-stack web application built using Python and Django that allows users to enroll in courses, make payments, post reviews, and manage their learning experience. The platform is designed to offer an intuitive and efficient way to explore educational content, featuring a keyword-based filtering system, secure authentication, and a responsive user interface.
+## Introduction
+TexnoKurs is a full-stack web application built using Python and Django that allows users to enroll in courses, make payments, post reviews, and manage their learning experience. The platform is designed to offer an intuitive and efficient way to explore educational content, featuring a keyword-based filtering system, secure authentication, and a responsive user interface.
 
-Technologies Used
-TexnoCourse is developed using modern web technologies to ensure scalability, security, and ease of use:
-•	Backend: Python (Django Framework)
-•	Frontend: HTML, CSS, Bootstrap, JavaScript
-•	Database: SQLite3
-•	Authentication & Admin Customization: Django’s built-in authentication system and Jazzmin package
+## Technologies Used
+TexnoKurs leverages a robust tech stack to ensure scalability, security, and usability:
+- **Backend**: Python with the Django Framework, providing a high-level, secure, and maintainable structure for web development.
+- **Frontend**: HTML for structure, CSS and Bootstrap for styling, and JavaScript for dynamic interactions, ensuring a responsive and user-friendly interface.
+- **Database**: SQLite3 for development (lightweight and easy to set up), with PostgreSQL recommended for production due to its robustness and performance.
+- **Authentication & Admin Customization**: Django’s built-in authentication system for secure user management, enhanced by the Jazzmin package for a modern admin interface.
 
-Architecture
-TexnoCourse follows a three-tier architecture:
-1.	Frontend: Implements the UI using HTML, CSS, Bootstrap, and JavaScript for a responsive experience.
-2.	Backend: Handles business logic and database interactions using Django.
-3.	Database: Stores user and course information using SQLite3.
-Features Overview
-1. User Authentication
-•	Secure login and registration system
-•	Password reset functionality
-•	Session-based authentication using Django’s built-in features
-2. Course Management
-•	Users can browse, enroll, and delete courses
-•	Courses categorized with keywords and tags for easy searching
-•	Course details page with comprehensive information
-3. Payment System
-•	Secure payment processing for enrolling in courses
-•	Supports multiple payment methods (credit cards, PayPal, etc.)
-•	Ensures transaction security and data protection
-4. Comment System
-•	Users can post reviews and feedback on courses
-•	Comments are moderated via the admin panel
-•	Helps other users make informed decisions
-5. Course Filtering
-•	Keyword and tag-based filtering system
-•	Allows users to quickly find relevant courses
-6. Admin Panel
-•	Custom admin dashboard powered by the Jazzmin package
-•	Enables management of users, courses, payments, and comments
-•	User-friendly interface for site administrators
+## Architecture
+TexnoKurs follows a three-tier architecture:
+1. **Frontend**: Implements the UI using HTML, CSS, Bootstrap, and JavaScript for a responsive experience across devices.
+2. **Backend**: Handles business logic, API endpoints, and database interactions using Django’s ORM and view system.
+3. **Database**: Stores user data, course details, and transaction records using SQLite3, with scalability to PostgreSQL.
 
-Getting Started
-1. Installation & Setup
+
+## Features Overview
+1. **User Authentication**
+   - Secure login and registration system
+   - Password reset functionality
+   - Session-based authentication using Django’s built-in features
+2. **Course Management**
+   - Users can browse, enroll, and delete courses
+   - Courses categorized with keywords and tags for easy searching
+   - Course details page with comprehensive information
+3. **Payment System**
+   - Secure payment processing for enrolling in courses
+   - Supports multiple payment methods (credit cards, PayPal, etc.)
+   - Ensures transaction security and data protection
+4. **Comment System**
+   - Users can post reviews and feedback on courses
+   - Comments are moderated via the admin panel
+   - Helps other users make informed decisions
+5. **Course Filtering**
+   - Keyword and tag-based filtering system
+   - Allows users to quickly find relevant courses
+6. **Admin Panel**
+   - Custom admin dashboard powered by the Jazzmin package
+   - Enables management of users, courses, payments, and comments
+   - User-friendly interface for site administrators
+
+## Getting Started
+### 1. Installation & Setup
 Ensure you have Python and Django installed. Clone the repository and navigate to the project folder:
-git clone <repository_url>
-cd texnocourse
+```
+git clone <https://github.com/NizamiPiriyev/TexnoKurs-Project>
+cd TexnoKurses
+```
 Install dependencies:
+```
 pip install -r requirements.txt
+```
 Run migrations and start the development server:
+```
 python manage.py migrate
 python manage.py runserver
-Access the website at: http://127.0.0.1:8000/ 
+```
+Access the website at: http://127.0.0.1:8000/
 
-2. File Structure
-texnocourse/
-├── texnocourse/
-│   ├── settings.py
-│   ├── urls.py
+### 2. File Structure
+```
+TexnoKurses/
+├── TexnoKurs/
+│   ├── account
+│   ├── courses
 │   ├── ...
-├── courses/
-│   ├── admin.py
-│   ├── models.py
-│   ├── views.py
-│   ├── ...
-├── templates/
-│   ├── base.html
-│   ├── course_detail.html
-│   ├── course_list.html
-│   ├── ...
-└── ...
-•	texnocourse/ – Main project settings and configurations
-•	courses/ – App managing course-related logic
-•	templates/ – HTML templates for rendering UI
+├── env/
+│   ├── Include
+│   ├── Lib
+│   ├── Scripts
+│   ├── pyvenv
+├── README.MD/
 
-Deployment
-For production deployment:
-•	Use PostgreSQL instead of SQLite
-•	Configure a web server (e.g., Nginx, Apache)
-•	Set up Gunicorn or uWSGI for handling requests
-•	Implement environment variables for security settings
+```
+- `TexnoKurs/` – Main project settings and configurations
+- `env/` – App enviroment folder
 
-Contributing
+## Deployment
+### Production Deployment Instructions
+To deploy TexnoKurs in a production environment:
+1. **Database Setup**:
+   - Replace SQLite3 with PostgreSQL:
+     ```
+     pip install psycopg2
+     ```
+   - Update `settings.py` with PostgreSQL credentials.
+2. **Web Server Configuration**:
+   - Install and configure a web server like Nginx or Apache.
+   - Set up a reverse proxy to forward requests to the application server.
+3. **Application Server**:
+   - Install Gunicorn:
+     ```
+     pip install gunicorn
+     ```
+   - Run with:
+     ```
+     gunicorn --bind 0.0.0.0:8000 texnocourse.wsgi:application
+     ```
+4. **Environment Variables**:
+   - Use a `.env` file or system environment variables for sensitive data (e.g., `SECRET_KEY`, `DATABASE_URL`).
+   - Example `.env`:
+     ```
+     SECRET_KEY=your-secret-key
+     DATABASE_URL=postgres://user:password@localhost/dbname
+     ```
+5. **Security**:
+   - Enable HTTPS with a certificate from Let’s Encrypt.
+   - Configure Django’s `ALLOWED_HOSTS` in `settings.py`.
+
+## Contributing
 We welcome contributions! To contribute:
-1.	Fork the repository
-2.	Create a feature branch
-3.	Make improvements and submit a pull request
+1. Fork the repository
+2. Create a feature branch
+3. Make improvements and submit a pull request
 
-Credits
-TexnoCourse was developed by Nizami Piriyev as a full-stack educational platform. The project integrates modern web technologies to provide a seamless learning experience.
+## Credits
+TexnoKurs was developed by Nizami Piriyev as a full-stack educational platform. The project integrates modern web technologies to provide a seamless learning experience.
 
-Conclusion
-TexnoCourse is a feature-rich learning management system built with Django. With its secure authentication, payment processing, and user-friendly course management, it offers a comprehensive solution for online education. Future enhancements could include AI-driven course recommendations and an advanced analytics dashboard for user progress tracking.
+## Conclusion
+TexnoKurs is a robust learning management system built with Django, offering secure authentication, payment processing, and an intuitive course management interface. Its scalable architecture supports future enhancements, such as AI-driven course recommendations and an advanced analytics dashboard for tracking user progress, making it a promising platform for online education.
